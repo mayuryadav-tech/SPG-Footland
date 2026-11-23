@@ -1,0 +1,43 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isVerifiedAdmin() {
+      return request.auth != null &&
+        request.auth.token.email_verified == true &&
+        request.auth.token.email != null && (
+          request.auth.token.email.lower() == 'yadmayur@gmail.com' ||
+          firestore.exists(/databases/(default)/documents/admins/$(request.auth.token.email.lower()))
+        );
+    }
+
+    function isValidImageUpload() {
+      return request.resource != null &&
+        request.resource.size <= 5 * 1024 * 1024 &&
+        request.resource.contentType.matches('image/(jpeg|png|webp|gif|svg\\+xml)');
+    }
+
+    match /products/{allPaths=**} {
+      allow read: if true;
+      allow write: if isVerifiedAdmin() && (request.resource == null || isValidImageUpload());
+    }
+
+    match /categories/{allPaths=**} {
+      allow read: if true;
+      allow write: if isVerifiedAdmin() && (request.resource == null || isValidImageUpload());
+    }
+
+    match /banners/{allPaths=**} {
+      allow read: if true;
+      allow write: if isVerifiedAdmin() && (request.resource == null || isValidImageUpload());
+    }
+
+    match /branding/{allPaths=**} {
+      allow read: if true;
+      allow write: if isVerifiedAdmin() && (request.resource == null || isValidImageUpload());
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

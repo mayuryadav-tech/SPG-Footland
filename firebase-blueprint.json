@@ -1,0 +1,170 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Footwear category such as Sneakers, Sports Shoes, or Formal Shoes.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "slug": { "type": "string", "minLength": 1, "maxLength": 80, "pattern": "^[a-z0-9-]+$" },
+        "description": { "type": "string", "maxLength": 400 },
+        "bannerUrl": { "type": "string", "maxLength": 1000 },
+        "order": { "type": "number" }
+      },
+      "required": ["name", "slug", "description", "bannerUrl", "order"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Footwear product item in the SPG Footland catalogue.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 140 },
+        "brand": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "categoryId": { "type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[a-zA-Z0-9_\\-]+$" },
+        "categorySlug": { "type": "string", "minLength": 1, "maxLength": 80, "pattern": "^[a-z0-9-]+$" },
+        "description": { "type": "string", "maxLength": 2000 },
+        "price": { "type": "number" },
+        "discountPrice": { "type": "number" },
+        "sizes": { "type": "array" },
+        "colors": { "type": "array" },
+        "gender": { "type": "string", "enum": ["Men", "Women", "Unisex", "Kids"] },
+        "material": { "type": "string", "maxLength": 120 },
+        "stock": { "type": "number" },
+        "unitsSold": { "type": "number" },
+        "images": { "type": "array" },
+        "featured": { "type": "boolean" },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": [
+        "name",
+        "brand",
+        "categoryId",
+        "categorySlug",
+        "description",
+        "price",
+        "sizes",
+        "colors",
+        "gender",
+        "material",
+        "stock",
+        "unitsSold",
+        "images",
+        "featured",
+        "active",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Banner": {
+      "title": "Banner",
+      "description": "Homepage hero carousel promotional banner.",
+      "type": "object",
+      "properties": {
+        "imageUrl": { "type": "string", "minLength": 1, "maxLength": 1000 },
+        "headline": { "type": "string", "minLength": 1, "maxLength": 120 },
+        "subtext": { "type": "string", "maxLength": 240 },
+        "linkUrl": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "order": { "type": "number" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["imageUrl", "headline", "subtext", "linkUrl", "order", "active"]
+    },
+    "SiteInfo": {
+      "title": "SiteInfo",
+      "description": "Storewide branding, contact details, social links, and About Us copy.",
+      "type": "object",
+      "properties": {
+        "shopName": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "logoUrl": { "type": "string", "maxLength": 1000 },
+        "address": { "type": "string", "maxLength": 400 },
+        "phone": { "type": "string", "maxLength": 40 },
+        "email": { "type": "string", "maxLength": 160 },
+        "whatsapp": { "type": "string", "maxLength": 40 },
+        "workingHours": { "type": "string", "maxLength": 200 },
+        "socialLinks": { "type": "object" },
+        "aboutText": { "type": "string", "maxLength": 4000 },
+        "footerText": { "type": "string", "maxLength": 300 },
+        "mapEmbedUrl": { "type": "string", "maxLength": 1000 }
+      },
+      "required": [
+        "shopName",
+        "logoUrl",
+        "address",
+        "phone",
+        "email",
+        "whatsapp",
+        "workingHours",
+        "socialLinks",
+        "aboutText",
+        "footerText",
+        "mapEmbedUrl"
+      ]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "Customer contact form submission.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "email": { "type": "string", "minLength": 3, "maxLength": 160 },
+        "phone": { "type": "string", "maxLength": 30 },
+        "message": { "type": "string", "minLength": 1, "maxLength": 2000 },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "phone", "message", "read", "createdAt"]
+    },
+    "Subscriber": {
+      "title": "Subscriber",
+      "description": "Newsletter email subscriber.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "minLength": 3, "maxLength": 160 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email", "createdAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Authorized admin email record.",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "minLength": 3, "maxLength": 160 },
+        "addedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["email"]
+    }
+  },
+  "firestore": {
+    "/categories/{categoryId}": {
+      "schema": { "$ref": "#/entities/Category" },
+      "description": "Footwear categories ordered by display order."
+    },
+    "/products/{productId}": {
+      "schema": { "$ref": "#/entities/Product" },
+      "description": "Footwear catalogue products with stock, pricing, and unitsSold."
+    },
+    "/banners/{bannerId}": {
+      "schema": { "$ref": "#/entities/Banner" },
+      "description": "Homepage hero carousel advertisement banners."
+    },
+    "/siteInfo/{docId}": {
+      "schema": { "$ref": "#/entities/SiteInfo" },
+      "description": "Single document 'main' containing storewide contact and About info."
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": { "$ref": "#/entities/Enquiry" },
+      "description": "Customer contact enquiries (public create, admin read/update/delete)."
+    },
+    "/subscribers/{subscriberId}": {
+      "schema": { "$ref": "#/entities/Subscriber" },
+      "description": "Newsletter subscribers (public create, admin read/delete)."
+    },
+    "/admins/{adminId}": {
+      "schema": { "$ref": "#/entities/Admin" },
+      "description": "Authorized administrator email records keyed by lowercase email."
+    }
+  }
+}

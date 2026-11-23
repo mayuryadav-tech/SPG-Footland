@@ -1,0 +1,252 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Reusable Security Primitives ---
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function isValidSlug(slug) {
+      return slug is string && slug.size() >= 1 && slug.size() <= 80 && slug.matches('^[a-z0-9-]+$');
+    }
+
+    function isValidEmail(email) {
+      return email is string && email.size() >= 3 && email.size() <= 160 && email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+    }
+
+    function isValidAdminDocId(id) {
+      return id is string && id.size() >= 3 && id.size() <= 160 && id.matches('^[a-z0-9._%+\\-]+@[a-z0-9.\\-]+\\.[a-z]{2,}$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isVerifiedUser() {
+      return request.auth != null &&
+        request.auth.token.email_verified == true &&
+        request.auth.token.email != null;
+    }
+
+    function isBootstrapAdmin() {
+      return isVerifiedUser() &&
+        request.auth.token.email.lower() == 'yadmayur@gmail.com';
+    }
+
+    function isAdmin() {
+      return isBootstrapAdmin() || (
+        isVerifiedUser() &&
+        exists(/databases/$(database)/documents/admins/$(request.auth.token.email.lower()))
+      );
+    }
+
+    // --- Validation Blueprints (Anti-Update-Gap) ---
+
+    function isValidCategory(data) {
+      return data.keys().hasAll(['name', 'slug', 'description', 'bannerUrl', 'order']) &&
+        data.keys().hasOnly(['name', 'slug', 'description', 'bannerUrl', 'order']) &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 80 &&
+        isValidSlug(data.slug) &&
+        data.description is string && data.description.size() <= 400 &&
+        data.bannerUrl is string && data.bannerUrl.size() <= 1000 &&
+        data.order is number && data.order >= 0 && data.order <= 1000;
+    }
+
+    function isValidProduct(data) {
+      return data.keys().hasAll([
+          'name', 'brand', 'categoryId', 'categorySlug', 'description',
+          'price', 'sizes', 'colors', 'gender', 'material', 'stock',
+          'unitsSold', 'images', 'featured', 'active', 'createdAt', 'updatedAt'
+        ]) &&
+        data.keys().hasOnly([
+          'name', 'brand', 'categoryId', 'categorySlug', 'description',
+          'price', 'discountPrice', 'sizes', 'colors', 'gender', 'material',
+          'stock', 'unitsSold', 'images', 'featured', 'active', 'createdAt', 'updatedAt'
+        ]) &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 140 &&
+        data.brand is string && data.brand.size() >= 1 && data.brand.size() <= 80 &&
+        isValidId(data.categoryId) &&
+        isValidSlug(data.categorySlug) &&
+        data.description is string && data.description.size() <= 2000 &&
+        data.price is number && data.price >= 0 && data.price <= 500000 &&
+        (!('discountPrice' in data) || data.discountPrice == null || (data.discountPrice is number && data.discountPrice >= 0 && data.discountPrice <= data.price)) &&
+        data.sizes is list && data.sizes.size() <= 20 && (data.sizes.size() == 0 || data.sizes[0] is string) &&
+        data.colors is list && data.colors.size() <= 15 && (data.colors.size() == 0 || data.colors[0] is string) &&
+        data.gender is string && data.gender in ['Men', 'Women', 'Unisex', 'Kids'] &&
+        data.material is string && data.material.size() <= 120 &&
+        data.stock is number && data.stock >= 0 && data.stock <= 100000 &&
+        data.unitsSold is number && data.unitsSold >= 0 && data.unitsSold <= 10000000 &&
+        data.images is list && data.images.size() <= 10 && (data.images.size() == 0 || data.images[0] is string) &&
+        data.featured is bool &&
+        data.active is bool &&
+        data.createdAt is timestamp &&
+        data.updatedAt is timestamp;
+    }
+
+    function isValidBanner(data) {
+      return data.keys().hasAll(['imageUrl', 'headline', 'subtext', 'linkUrl', 'order', 'active']) &&
+        data.keys().hasOnly(['imageUrl', 'headline', 'subtext', 'linkUrl', 'order', 'active']) &&
+        data.imageUrl is string && data.imageUrl.size() >= 1 && data.imageUrl.size() <= 1000 &&
+        data.headline is string && data.headline.size() >= 1 && data.headline.size() <= 120 &&
+        data.subtext is string && data.subtext.size() <= 240 &&
+        data.linkUrl is string && data.linkUrl.size() >= 1 && data.linkUrl.size() <= 300 &&
+        data.order is number && data.order >= 0 && data.order <= 100 &&
+        data.active is bool;
+    }
+
+    function isValidSocialLinks(links) {
+      return links is map &&
+        links.keys().hasOnly(['facebook', 'instagram', 'whatsapp', 'youtube']) &&
+        (!('facebook' in links) || (links.facebook is string && links.facebook.size() <= 300)) &&
+        (!('instagram' in links) || (links.instagram is string && links.instagram.size() <= 300)) &&
+        (!('whatsapp' in links) || (links.whatsapp is string && links.whatsapp.size() <= 300)) &&
+        (!('youtube' in links) || (links.youtube is string && links.youtube.size() <= 300));
+    }
+
+    function isValidSiteInfo(data) {
+      return data.keys().hasAll([
+          'shopName', 'logoUrl', 'address', 'phone', 'email', 'whatsapp',
+          'workingHours', 'socialLinks', 'aboutText', 'footerText', 'mapEmbedUrl'
+        ]) &&
+        data.keys().hasOnly([
+          'shopName', 'logoUrl', 'address', 'phone', 'email', 'whatsapp',
+          'workingHours', 'socialLinks', 'aboutText', 'footerText', 'mapEmbedUrl'
+        ]) &&
+        data.shopName is string && data.shopName.size() >= 1 && data.shopName.size() <= 100 &&
+        data.logoUrl is string && data.logoUrl.size() <= 1000 &&
+        data.address is string && data.address.size() <= 400 &&
+        data.phone is string && data.phone.size() <= 40 &&
+        data.email is string && data.email.size() <= 160 &&
+        data.whatsapp is string && data.whatsapp.size() <= 40 &&
+        data.workingHours is string && data.workingHours.size() <= 200 &&
+        isValidSocialLinks(data.socialLinks) &&
+        data.aboutText is string && data.aboutText.size() <= 4000 &&
+        data.footerText is string && data.footerText.size() <= 300 &&
+        data.mapEmbedUrl is string && data.mapEmbedUrl.size() <= 1000;
+    }
+
+    function isValidEnquiry(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message', 'read', 'createdAt']) &&
+        data.keys().hasOnly(['name', 'email', 'phone', 'message', 'read', 'createdAt']) &&
+        data.name is string && data.name.size() >= 1 && data.name.size() <= 100 &&
+        isValidEmail(data.email) &&
+        data.phone is string && data.phone.size() <= 30 &&
+        data.message is string && data.message.size() >= 1 && data.message.size() <= 2000 &&
+        data.read is bool &&
+        data.createdAt is timestamp;
+    }
+
+    function isValidSubscriber(data) {
+      return data.keys().hasAll(['email', 'createdAt']) &&
+        data.keys().hasOnly(['email', 'createdAt']) &&
+        isValidEmail(data.email) &&
+        data.createdAt is timestamp;
+    }
+
+    function isValidAdminDoc(data, docId) {
+      return data.keys().hasAll(['email']) &&
+        data.keys().hasOnly(['email', 'addedAt']) &&
+        isValidEmail(data.email) &&
+        data.email.lower() == docId &&
+        (!('addedAt' in data) || data.addedAt == request.time);
+    }
+
+    // --- Collection Rules (Auth -> Static Validation -> Relational Lookup) ---
+
+    match /categories/{categoryId} {
+      allow get: if isValidId(categoryId);
+      allow list: if true;
+      allow create: if isVerifiedUser() && isValidId(categoryId) && isValidCategory(incoming()) && isAdmin();
+      allow update: if isVerifiedUser() && isValidId(categoryId) && isValidCategory(incoming()) &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['name', 'slug', 'description', 'bannerUrl', 'order']) &&
+        isAdmin();
+      allow delete: if isVerifiedUser() && isValidId(categoryId) && isAdmin();
+    }
+
+    match /products/{productId} {
+      allow get: if isValidId(productId);
+      allow list: if true;
+      allow create: if isVerifiedUser() && isValidId(productId) && isValidProduct(incoming()) &&
+        incoming().createdAt == request.time &&
+        incoming().updatedAt == request.time &&
+        isAdmin() &&
+        exists(/databases/$(database)/documents/categories/$(incoming().categoryId));
+      allow update: if isVerifiedUser() && isValidId(productId) && isValidProduct(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().updatedAt == request.time &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'name', 'brand', 'categoryId', 'categorySlug', 'description',
+          'price', 'discountPrice', 'sizes', 'colors', 'gender', 'material',
+          'stock', 'unitsSold', 'images', 'featured', 'active', 'updatedAt'
+        ]) &&
+        isAdmin() &&
+        (incoming().categoryId == existing().categoryId || exists(/databases/$(database)/documents/categories/$(incoming().categoryId)));
+      allow delete: if isVerifiedUser() && isValidId(productId) && isAdmin();
+    }
+
+    match /banners/{bannerId} {
+      allow get: if isValidId(bannerId);
+      allow list: if true;
+      allow create: if isVerifiedUser() && isValidId(bannerId) && isValidBanner(incoming()) && isAdmin();
+      allow update: if isVerifiedUser() && isValidId(bannerId) && isValidBanner(incoming()) &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['imageUrl', 'headline', 'subtext', 'linkUrl', 'order', 'active']) &&
+        isAdmin();
+      allow delete: if isVerifiedUser() && isValidId(bannerId) && isAdmin();
+    }
+
+    match /siteInfo/{docId} {
+      allow get: if docId == 'main';
+      allow list: if false;
+      allow create: if isVerifiedUser() && docId == 'main' && isValidSiteInfo(incoming()) && isAdmin();
+      allow update: if isVerifiedUser() && docId == 'main' && isValidSiteInfo(incoming()) &&
+        incoming().diff(existing()).affectedKeys().hasOnly([
+          'shopName', 'logoUrl', 'address', 'phone', 'email', 'whatsapp',
+          'workingHours', 'socialLinks', 'aboutText', 'footerText', 'mapEmbedUrl'
+        ]) &&
+        isAdmin();
+      allow delete: if isVerifiedUser() && docId == 'main' && isAdmin();
+    }
+
+    match /enquiries/{enquiryId} {
+      allow get: if isVerifiedUser() && isValidId(enquiryId) && isAdmin();
+      allow list: if isVerifiedUser() && isAdmin();
+      allow create: if isValidId(enquiryId) && isValidEnquiry(incoming()) &&
+        incoming().read == false &&
+        incoming().createdAt == request.time;
+      allow update: if isVerifiedUser() && isValidId(enquiryId) && isValidEnquiry(incoming()) &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['read']) &&
+        isAdmin();
+      allow delete: if isVerifiedUser() && isValidId(enquiryId) && isAdmin();
+    }
+
+    match /subscribers/{subscriberId} {
+      allow get: if isVerifiedUser() && isValidId(subscriberId) && isAdmin();
+      allow list: if isVerifiedUser() && isAdmin();
+      allow create: if isValidId(subscriberId) && isValidSubscriber(incoming()) &&
+        incoming().createdAt == request.time;
+      allow update: if false;
+      allow delete: if isVerifiedUser() && isValidId(subscriberId) && isAdmin();
+    }
+
+    match /admins/{adminId} {
+      allow get: if isVerifiedUser() && isValidAdminDocId(adminId) &&
+        (request.auth.token.email.lower() == adminId || isAdmin());
+      allow list: if isVerifiedUser() && isAdmin();
+      allow create: if isVerifiedUser() && isValidAdminDocId(adminId) && isValidAdminDoc(incoming(), adminId) && isAdmin();
+      allow update: if false;
+      allow delete: if isVerifiedUser() && isValidAdminDocId(adminId) && isAdmin();
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "SPG Footland",
+  "description": "Responsive e-commerce footwear catalogue and Firebase admin CMS for SPG Footland featuring trending collections, smart filters, WhatsApp enquiries, and live inventory management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
