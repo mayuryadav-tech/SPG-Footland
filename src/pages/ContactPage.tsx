@@ -69,15 +69,15 @@ export function ContactPage() {
   return (
     <div className="bg-slate-50/60 pb-20">
       {/* Header */}
-      <section className="bg-[#1C0A0C] text-white py-14 sm:py-18 border-b-2 border-yellow-400/70">
+      <section className="bg-slate-950 text-white py-14 sm:py-18">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="font-mono text-xs font-semibold tracking-wider text-yellow-400">
+          <p className="font-mono text-xs font-semibold tracking-wider text-orange-400">
             Get in Touch
           </p>
           <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight sm:text-5xl">
             Contact {siteInfo.shopName}
           </h1>
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-red-100/85 sm:text-base">
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 sm:text-base">
             Have a question about UK size availability, bulk sports team orders, or showroom
             directions? Send us an enquiry or chat directly on WhatsApp.
           </p>
@@ -93,7 +93,7 @@ export function ContactPage() {
 
               <div className="space-y-5 text-sm">
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-50 text-red-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-orange-600">
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
@@ -103,14 +103,14 @@ export function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-50 text-red-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-orange-600">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Phone</p>
                     <a
                       href={`tel:${siteInfo.phone.replace(/\s+/g, '')}`}
-                      className="mt-0.5 block font-mono text-slate-600 hover:text-red-600 tabular-nums"
+                      className="mt-0.5 block font-mono text-slate-600 hover:text-orange-600 tabular-nums"
                     >
                       {siteInfo.phone}
                     </a>
@@ -118,14 +118,14 @@ export function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-50 text-red-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-orange-600">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="font-semibold text-slate-900">Email</p>
                     <a
                       href={`mailto:${siteInfo.email}`}
-                      className="mt-0.5 block text-slate-600 hover:text-red-600"
+                      className="mt-0.5 block text-slate-600 hover:text-orange-600"
                     >
                       {siteInfo.email}
                     </a>
@@ -133,7 +133,7 @@ export function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-yellow-50 text-red-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-orange-600">
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
@@ -198,7 +198,7 @@ export function ContactPage() {
                   <button
                     type="button"
                     onClick={() => setSubmitted(false)}
-                    className="mt-5 rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+                    className="mt-5 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-500 transition-colors"
                   >
                     Send Another Message
                   </button>
@@ -224,7 +224,7 @@ export function ContactPage() {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Aarav Deshmukh"
-                        className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                        className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
                       />
                     </div>
                     <div>
@@ -238,7 +238,7 @@ export function ContactPage() {
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="+91 98220 00000"
-                        className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                        className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 font-mono text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
                       />
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export function ContactPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
-                      className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                      className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
                     />
                   </div>
 
@@ -271,14 +271,14 @@ export function ContactPage() {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Mention the footwear model, UK size, colour preference, or any question..."
-                      className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                      className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 text-sm font-bold text-white hover:bg-red-700 transition-colors disabled:opacity-60"
+                    className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors disabled:opacity-60"
                   >
                     <Send className="h-4 w-4" />
                     <span>{submitting ? 'Sending Enquiry...' : 'Submit Enquiry'}</span>

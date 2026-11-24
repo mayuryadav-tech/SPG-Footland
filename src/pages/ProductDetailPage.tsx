@@ -90,7 +90,7 @@ export function ProductDetailPage() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+          className="mt-6 inline-flex items-center rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-500 transition-colors"
         >
           Return to Catalogue
         </Link>
@@ -158,7 +158,7 @@ export function ProductDetailPage() {
                 type="button"
                 onClick={() => setZoomOpen(true)}
                 aria-label="Zoom product image"
-                className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-lg bg-[#1C0A0C]/85 px-3 py-2 text-xs font-semibold text-white backdrop-blur-xs hover:bg-red-600 transition-colors"
+                className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-lg bg-slate-950/80 px-3 py-2 text-xs font-semibold text-white backdrop-blur-xs hover:bg-orange-500 transition-colors"
               >
                 <ZoomIn className="h-4 w-4" />
                 <span>Zoom</span>
@@ -175,7 +175,7 @@ export function ProductDetailPage() {
                     aria-label={`View image ${idx + 1}`}
                     className={`relative h-20 w-24 shrink-0 overflow-hidden rounded-xl border-2 bg-slate-100 transition-all ${
                       idx === activeImageIndex
-                        ? 'border-red-600 ring-2 ring-red-600/20'
+                        ? 'border-orange-500 ring-2 ring-orange-500/20'
                         : 'border-slate-200 opacity-75 hover:opacity-100'
                     }`}
                   >
@@ -194,13 +194,13 @@ export function ProductDetailPage() {
           <div className="lg:col-span-5 space-y-6">
             <div>
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-500">
-                <span className="text-red-600">{product.brand}</span>
+                <span className="text-orange-600">{product.brand}</span>
                 <span aria-hidden="true">·</span>
                 <span>{product.gender}</span>
                 {product.unitsSold >= 200 && (
                   <>
                     <span aria-hidden="true">·</span>
-                    <span className="rounded bg-yellow-400 px-1.5 py-0.5 text-[11px] font-bold text-slate-950">Best Seller</span>
+                    <span className="text-slate-900">Best Seller</span>
                   </>
                 )}
               </div>
@@ -219,7 +219,7 @@ export function ProductDetailPage() {
                     <span className="font-mono text-lg text-slate-400 line-through tabular-nums">
                       {formatINR(product.price)}
                     </span>
-                    <span className="font-mono text-sm font-bold text-red-600 tabular-nums">
+                    <span className="font-mono text-sm font-bold text-orange-600 tabular-nums">
                       Save {discountPercent}% ({formatINR(product.price - effectivePrice)})
                     </span>
                   </>
@@ -247,7 +247,7 @@ export function ProductDetailPage() {
                     Select Size (UK / India)
                   </span>
                   {selectedSize && (
-                    <span className="font-mono text-xs font-semibold text-red-600">
+                    <span className="font-mono text-xs font-semibold text-orange-600">
                       Selected: {selectedSize}
                     </span>
                   )}
@@ -262,8 +262,8 @@ export function ProductDetailPage() {
                         onClick={() => setSelectedSize(size)}
                         className={`rounded-lg border py-2.5 font-mono text-xs font-semibold transition-colors tabular-nums ${
                           active
-                            ? 'border-red-600 bg-red-600 text-white'
-                            : 'border-slate-200 bg-white text-slate-800 hover:border-red-400'
+                            ? 'border-slate-900 bg-slate-900 text-white'
+                            : 'border-slate-200 bg-white text-slate-800 hover:border-slate-400'
                         }`}
                       >
                         {size}
@@ -296,8 +296,8 @@ export function ProductDetailPage() {
                         onClick={() => setSelectedColor(color)}
                         className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold transition-colors ${
                           active
-                            ? 'border-red-600 bg-red-600 text-white'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-red-400'
+                            ? 'border-slate-900 bg-slate-900 text-white'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
                         }`}
                       >
                         <span
@@ -346,17 +346,17 @@ export function ProductDetailPage() {
 
               <div className="grid grid-cols-3 gap-3 border-t border-slate-100 pt-4 text-xs text-slate-600">
                 <div className="flex flex-col gap-1">
-                  <ShieldCheck className="h-4 w-4 text-red-600" />
+                  <ShieldCheck className="h-4 w-4 text-orange-500" />
                   <span className="font-semibold text-slate-900">100% Genuine</span>
                   <span>Brand-verified pairs</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Store className="h-4 w-4 text-red-600" />
+                  <Store className="h-4 w-4 text-orange-500" />
                   <span className="font-semibold text-slate-900">In-Store Try-On</span>
                   <span>Reserve via WhatsApp</span>
                 </div>
                 <div className="flex flex-col gap-1">
-                  <Layers className="h-4 w-4 text-red-600" />
+                  <Layers className="h-4 w-4 text-orange-500" />
                   <span className="font-semibold text-slate-900">UK Sizing</span>
                   <span>Expert fit guidance</span>
                 </div>
@@ -379,7 +379,7 @@ export function ProductDetailPage() {
               </div>
               <Link
                 to={`/category/${product.categorySlug}`}
-                className="text-sm font-semibold text-red-600 hover:text-red-700 whitespace-nowrap"
+                className="text-sm font-semibold text-orange-600 hover:text-orange-700 whitespace-nowrap"
               >
                 View all →
               </Link>
@@ -396,7 +396,7 @@ export function ProductDetailPage() {
       {/* Fullscreen Image Zoom Lightbox */}
       {zoomOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-[#1C0A0C]/92 p-4 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
           onClick={() => setZoomOpen(false)}
@@ -405,12 +405,12 @@ export function ProductDetailPage() {
             type="button"
             onClick={() => setZoomOpen(false)}
             aria-label="Close zoom view"
-            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-red-600 transition-colors"
+            className="absolute right-5 top-5 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white hover:bg-orange-500 transition-colors"
           >
             <X className="h-6 w-6" />
           </button>
           <div
-            className="max-h-[88vh] max-w-5xl overflow-hidden rounded-2xl bg-[#2A0D11]"
+            className="max-h-[88vh] max-w-5xl overflow-hidden rounded-2xl bg-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             <SafeImage

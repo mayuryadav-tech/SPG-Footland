@@ -37,7 +37,7 @@ export function ConfirmDialog({
           <div className="flex items-start gap-3">
             <div
               className={`mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${
-                destructive ? 'bg-red-50 text-red-600' : 'bg-yellow-100 text-red-700'
+                destructive ? 'bg-red-50 text-red-600' : 'bg-orange-50 text-orange-600'
               }`}
             >
               <AlertTriangle className="h-5 w-5" />
@@ -73,10 +73,10 @@ export function ConfirmDialog({
             type="button"
             onClick={onConfirm}
             disabled={loading}
-            className={`rounded-lg px-4 py-2 text-sm font-semibold transition-colors disabled:opacity-60 whitespace-nowrap ${
+            className={`rounded-lg px-4 py-2 text-sm font-semibold text-white transition-colors disabled:opacity-60 whitespace-nowrap ${
               destructive
-                ? 'bg-red-700 text-white hover:bg-red-800'
-                : 'bg-yellow-400 text-slate-950 hover:bg-yellow-300'
+                ? 'bg-red-600 hover:bg-red-700'
+                : 'bg-orange-500 hover:bg-orange-600'
             }`}
           >
             {loading ? 'Processing...' : confirmLabel}

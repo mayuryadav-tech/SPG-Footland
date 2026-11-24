@@ -138,7 +138,7 @@ export function CategoryPage() {
         </p>
         <Link
           to="/"
-          className="mt-6 inline-flex items-center rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+          className="mt-6 inline-flex items-center rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-500 transition-colors"
         >
           Back to Home
         </Link>
@@ -149,7 +149,7 @@ export function CategoryPage() {
   return (
     <div className="bg-slate-50/50 pb-20">
       {/* Category Hero Banner */}
-      <section className="relative overflow-hidden bg-[#1C0A0C] text-white border-b-2 border-yellow-400/70">
+      <section className="relative overflow-hidden bg-slate-950 text-white">
         {category?.bannerUrl && (
           <SafeImage
             src={category.bannerUrl}
@@ -158,15 +158,15 @@ export function CategoryPage() {
             className="absolute inset-0 h-full w-full object-cover opacity-40"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1C0A0C] via-[#1C0A0C]/85 to-[#1C0A0C]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/40" />
 
         <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
-          <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-1.5 text-xs text-red-200/80">
+          <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-1.5 text-xs text-slate-400">
             <Link to="/" className="hover:text-white transition-colors">
               Home
             </Link>
             <ChevronRight className="h-3.5 w-3.5" />
-            <span className="text-yellow-400 font-medium">{category?.name || slug}</span>
+            <span className="text-orange-400 font-medium">{category?.name || slug}</span>
           </nav>
 
           <h1 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl">
@@ -193,7 +193,7 @@ export function CategoryPage() {
               <SlidersHorizontal className="h-4 w-4" />
               <span>Filters</span>
               {activeFilterCount > 0 && (
-                <span className="font-mono text-xs text-red-600 tabular-nums">
+                <span className="font-mono text-xs text-orange-600 tabular-nums">
                   ({activeFilterCount})
                 </span>
               )}
@@ -214,7 +214,7 @@ export function CategoryPage() {
               id="category-sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+              className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-slate-900 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
             >
               <option value="most-sold">Most Sold</option>
               <option value="price-asc">Price: Low to High</option>
@@ -262,7 +262,7 @@ export function CategoryPage() {
                   <button
                     type="button"
                     onClick={() => setFilters(EMPTY_FILTERS)}
-                    className="mt-5 rounded-lg bg-red-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-red-700 transition-colors"
+                    className="mt-5 rounded-lg bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-500 transition-colors"
                   >
                     Reset All Filters
                   </button>
@@ -285,7 +285,7 @@ export function CategoryPage() {
                     <button
                       type="button"
                       onClick={() => setVisibleCount((prev) => prev + PAGE_INCREMENT)}
-                      className="rounded-lg border-2 border-red-600 bg-white px-6 py-3 text-sm font-bold text-red-600 hover:bg-red-600 hover:text-white transition-colors"
+                      className="rounded-lg border border-slate-900 bg-white px-6 py-3 text-sm font-bold text-slate-900 hover:bg-slate-900 hover:text-white transition-colors"
                     >
                       Load More ({remaining} remaining)
                     </button>

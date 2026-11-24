@@ -431,7 +431,7 @@ export function AdminProductsPage() {
         <button
           type="button"
           onClick={openCreateModal}
-          className="inline-flex items-center gap-2 self-start rounded-lg bg-red-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-red-700 transition-colors whitespace-nowrap sm:self-auto"
+          className="inline-flex items-center gap-2 self-start rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors whitespace-nowrap sm:self-auto"
         >
           <Plus className="h-4 w-4" />
           <span>Add Product</span>
@@ -466,7 +466,7 @@ export function AdminProductsPage() {
               setCategoryFilter(e.target.value);
               setPage(1);
             }}
-            className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 focus:border-red-600 focus:outline-none"
+            className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 focus:border-orange-500 focus:outline-none"
           >
             <option value="all">All Categories ({products.length})</option>
             {categories.map((cat) => (
@@ -481,7 +481,7 @@ export function AdminProductsPage() {
       {/* Add / Edit Product Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1C0A0C]/70 p-4 sm:py-10 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-950/65 p-4 sm:py-10 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
         >
@@ -517,7 +517,7 @@ export function AdminProductsPage() {
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                     placeholder="Velocity Nitro Pro Runner"
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -529,7 +529,7 @@ export function AdminProductsPage() {
                     value={form.brand}
                     onChange={(e) => setForm({ ...form, brand: e.target.value })}
                     placeholder="Nike, Adidas, Clarks..."
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -541,7 +541,7 @@ export function AdminProductsPage() {
                     required
                     value={form.categoryId}
                     onChange={(e) => setForm({ ...form, categoryId: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   >
                     {categories.map((cat) => (
                       <option key={cat.id} value={cat.id}>
@@ -556,7 +556,7 @@ export function AdminProductsPage() {
                   <select
                     value={form.gender}
                     onChange={(e) => setForm({ ...form, gender: e.target.value as Gender })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   >
                     {GENDERS.map((g) => (
                       <option key={g} value={g}>
@@ -574,7 +574,7 @@ export function AdminProductsPage() {
                     value={form.material}
                     onChange={(e) => setForm({ ...form, material: e.target.value })}
                     placeholder="Full-Grain Leather, Mesh..."
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -589,7 +589,7 @@ export function AdminProductsPage() {
                     max={500000}
                     value={form.price}
                     onChange={(e) => setForm({ ...form, price: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                   />
                 </div>
                 <div>
@@ -601,7 +601,7 @@ export function AdminProductsPage() {
                     value={form.discountPrice}
                     onChange={(e) => setForm({ ...form, discountPrice: e.target.value })}
                     placeholder="Optional"
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                   />
                 </div>
                 <div>
@@ -613,7 +613,7 @@ export function AdminProductsPage() {
                     max={100000}
                     value={form.stock}
                     onChange={(e) => setForm({ ...form, stock: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                   />
                 </div>
                 <div>
@@ -624,7 +624,7 @@ export function AdminProductsPage() {
                     max={10000000}
                     value={form.unitsSold}
                     onChange={(e) => setForm({ ...form, unitsSold: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                   />
                 </div>
               </div>
@@ -637,7 +637,7 @@ export function AdminProductsPage() {
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                   placeholder="Describe cushioning, sole grip, fit, and recommended use..."
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -656,8 +656,8 @@ export function AdminProductsPage() {
                         onClick={() => toggleSize(sz)}
                         className={`rounded-lg border px-3 py-1.5 font-mono text-xs font-semibold transition-colors ${
                           active
-                            ? 'border-red-600 bg-red-600 text-white'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-red-400'
+                            ? 'border-slate-900 bg-slate-900 text-white'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
                         }`}
                       >
                         {sz}
@@ -680,8 +680,8 @@ export function AdminProductsPage() {
                         onClick={() => toggleColor(color)}
                         className={`rounded-lg border px-3 py-1.5 text-xs font-semibold transition-colors ${
                           active
-                            ? 'border-yellow-500 bg-yellow-400 text-slate-950'
-                            : 'border-slate-200 bg-white text-slate-700 hover:border-red-400'
+                            ? 'border-orange-500 bg-orange-500 text-white'
+                            : 'border-slate-200 bg-white text-slate-700 hover:border-slate-400'
                         }`}
                       >
                         {color}
@@ -695,7 +695,7 @@ export function AdminProductsPage() {
                     value={customColor}
                     onChange={(e) => setCustomColor(e.target.value)}
                     placeholder="Add custom colour..."
-                    className="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-xs focus:border-red-600 focus:outline-none"
+                    className="flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-xs focus:border-orange-500 focus:outline-none"
                   />
                   <button
                     type="button"
@@ -725,7 +725,7 @@ export function AdminProductsPage() {
                     type="checkbox"
                     checked={form.active}
                     onChange={(e) => setForm({ ...form, active: e.target.checked })}
-                    className="h-4 w-4 rounded accent-red-600"
+                    className="h-4 w-4 rounded accent-orange-500"
                   />
                   <span>Active (visible in storefront)</span>
                 </label>
@@ -735,7 +735,7 @@ export function AdminProductsPage() {
                     type="checkbox"
                     checked={form.featured}
                     onChange={(e) => setForm({ ...form, featured: e.target.checked })}
-                    className="h-4 w-4 rounded accent-red-600"
+                    className="h-4 w-4 rounded accent-orange-500"
                   />
                   <span>Featured Product</span>
                 </label>
@@ -752,7 +752,7 @@ export function AdminProductsPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="rounded-lg bg-red-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-60"
+                  className="rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-orange-600 disabled:opacity-60"
                 >
                   {saving ? 'Saving...' : editingProduct ? 'Save Changes' : 'Create Product'}
                 </button>

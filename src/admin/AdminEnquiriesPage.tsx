@@ -110,7 +110,7 @@ export function AdminEnquiriesPage() {
           >
             <Mail className="h-4 w-4" />
             <span>Enquiries</span>
-            <span className="font-mono text-xs text-red-600 tabular-nums">({unreadCount})</span>
+            <span className="font-mono text-xs text-orange-600 tabular-nums">({unreadCount})</span>
           </button>
           <button
             type="button"
@@ -148,18 +148,14 @@ export function AdminEnquiriesPage() {
               <div
                 key={enq.id}
                 className={`rounded-xl border p-5 transition-colors ${
-                  enq.read ? 'border-slate-200 bg-white' : 'border-yellow-300 bg-yellow-50/50'
+                  enq.read ? 'border-slate-200 bg-white' : 'border-orange-200 bg-orange-50/30'
                 }`}
               >
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   <div className="space-y-1">
                     <div className="flex flex-wrap items-center gap-2">
                       <h2 className="font-display text-base font-bold text-slate-900">{enq.name}</h2>
-                      <span
-                        className={`text-xs font-semibold ${
-                          enq.read ? 'text-slate-500' : 'text-red-600'
-                        }`}
-                      >
+                      <span className="text-xs font-semibold text-orange-600">
                         {enq.read ? 'Read' : 'Unread'}
                       </span>
                       <span className="text-xs text-slate-400">·</span>
@@ -168,7 +164,7 @@ export function AdminEnquiriesPage() {
                       </span>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600">
-                      <a href={`mailto:${enq.email}`} className="hover:text-red-600 font-medium">
+                      <a href={`mailto:${enq.email}`} className="hover:text-orange-600 font-medium">
                         {enq.email}
                       </a>
                       {enq.phone && (
@@ -176,7 +172,7 @@ export function AdminEnquiriesPage() {
                           <span>·</span>
                           <a
                             href={`tel:${enq.phone.replace(/\s+/g, '')}`}
-                            className="font-mono hover:text-red-600 tabular-nums"
+                            className="font-mono hover:text-orange-600 tabular-nums"
                           >
                             {enq.phone}
                           </a>

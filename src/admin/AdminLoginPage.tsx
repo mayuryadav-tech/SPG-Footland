@@ -32,14 +32,14 @@ export function AdminLoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-[#1C0A0C] px-4 py-12">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-slate-950 px-4 py-12">
       <div className="w-full max-w-md">
         <div className="mb-8 flex justify-center">
           <Logo variant="light" size="lg" />
         </div>
 
-        <div className="rounded-2xl border border-red-900/60 bg-white p-8 shadow-2xl">
-          <div className="flex items-center gap-2 text-xs font-semibold text-red-600">
+        <div className="rounded-2xl border border-slate-800 bg-white p-8 shadow-2xl">
+          <div className="flex items-center gap-2 text-xs font-semibold text-orange-600">
             <ShieldCheck className="h-4 w-4" />
             <span>Authorized Store Administration</span>
           </div>
@@ -63,10 +63,10 @@ export function AdminLoginPage() {
             type="button"
             onClick={handleGoogleSignIn}
             disabled={signingIn || loading}
-            className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-red-900 bg-[#1C0A0C] px-5 py-3.5 text-sm font-bold text-white hover:bg-red-700 transition-colors disabled:opacity-60"
+            className="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-slate-300 bg-slate-900 px-5 py-3.5 text-sm font-bold text-white hover:bg-slate-800 transition-colors disabled:opacity-60"
           >
             {signingIn ? (
-              <Loader2 className="h-5 w-5 animate-spin text-yellow-400" />
+              <Loader2 className="h-5 w-5 animate-spin text-orange-400" />
             ) : (
               <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
                 <path
@@ -99,7 +99,7 @@ export function AdminLoginPage() {
         <div className="mt-6 text-center">
           <Link
             to="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-red-200/80 hover:text-yellow-400 transition-colors"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-white transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
             <span>Back to SPG Footland Storefront</span>

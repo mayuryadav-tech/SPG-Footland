@@ -177,7 +177,7 @@ export function AdminBannersPage() {
         <button
           type="button"
           onClick={openCreate}
-          className="inline-flex items-center gap-2 self-start rounded-lg bg-red-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-red-700 transition-colors whitespace-nowrap sm:self-auto"
+          className="inline-flex items-center gap-2 self-start rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors whitespace-nowrap sm:self-auto"
         >
           <Plus className="h-4 w-4" />
           <span>Add Banner</span>
@@ -232,15 +232,15 @@ export function AdminBannersPage() {
               key={banner.id}
               className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white"
             >
-              <div className="relative aspect-[16/9] w-full bg-[#1C0A0C] overflow-hidden">
+              <div className="relative aspect-[16/9] w-full bg-slate-900 overflow-hidden">
                 <SafeImage
                   src={banner.imageUrl}
                   alt={banner.headline}
                   className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1C0A0C]/90 via-[#1C0A0C]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent" />
                 <div className="absolute left-3 top-3 flex items-center gap-2">
-                  <span className="rounded bg-yellow-400 px-2 py-0.5 font-mono text-xs font-bold text-slate-950 tabular-nums">
+                  <span className="rounded bg-slate-950/85 px-2 py-0.5 font-mono text-xs font-bold text-white tabular-nums">
                     Order #{banner.order}
                   </span>
                 </div>
@@ -290,7 +290,7 @@ export function AdminBannersPage() {
       {/* Add / Edit Banner Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1C0A0C]/70 p-4 sm:py-10 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-950/65 p-4 sm:py-10 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
         >
@@ -327,7 +327,7 @@ export function AdminBannersPage() {
                   value={form.headline}
                   onChange={(e) => setForm({ ...form, headline: e.target.value })}
                   placeholder="Engineered for Every Kilometre"
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -339,7 +339,7 @@ export function AdminBannersPage() {
                   value={form.subtext}
                   onChange={(e) => setForm({ ...form, subtext: e.target.value })}
                   placeholder="Short promotional copy shown below the headline..."
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -353,7 +353,7 @@ export function AdminBannersPage() {
                     value={form.linkUrl}
                     onChange={(e) => setForm({ ...form, linkUrl: e.target.value })}
                     placeholder="/category/sports-shoes"
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -364,7 +364,7 @@ export function AdminBannersPage() {
                     max={100}
                     value={form.order}
                     onChange={(e) => setForm({ ...form, order: e.target.value })}
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                   />
                 </div>
               </div>
@@ -374,7 +374,7 @@ export function AdminBannersPage() {
                   type="checkbox"
                   checked={form.active}
                   onChange={(e) => setForm({ ...form, active: e.target.checked })}
-                  className="h-4 w-4 rounded accent-red-600"
+                  className="h-4 w-4 rounded accent-orange-500"
                 />
                 <span>Active on homepage carousel (max 5 active)</span>
               </label>
@@ -390,7 +390,7 @@ export function AdminBannersPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="rounded-lg bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-60"
+                  className="rounded-lg bg-orange-500 px-5 py-2 text-sm font-bold text-white hover:bg-orange-600 disabled:opacity-60"
                 >
                   {saving ? 'Saving...' : editing ? 'Save Banner' : 'Create Banner'}
                 </button>

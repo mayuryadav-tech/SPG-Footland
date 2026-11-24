@@ -1,11 +1,11 @@
 export function CarouselSkeleton() {
   return (
-    <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] max-h-[560px] bg-[#1C0A0C] overflow-hidden animate-pulse">
+    <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] max-h-[560px] bg-slate-900 overflow-hidden animate-pulse">
       <div className="mx-auto max-w-7xl h-full px-6 flex flex-col justify-end pb-14">
-        <div className="h-4 w-32 rounded bg-red-900/70" />
-        <div className="mt-3 h-10 w-2/3 max-w-xl rounded bg-red-900/70" />
-        <div className="mt-3 h-4 w-1/2 max-w-md rounded bg-red-900/50" />
-        <div className="mt-6 h-11 w-36 rounded-lg bg-yellow-400/40" />
+        <div className="h-4 w-32 rounded bg-slate-700" />
+        <div className="mt-3 h-10 w-2/3 max-w-xl rounded bg-slate-700" />
+        <div className="mt-3 h-4 w-1/2 max-w-md rounded bg-slate-800" />
+        <div className="mt-6 h-11 w-36 rounded-lg bg-orange-500/40" />
       </div>
     </div>
   );

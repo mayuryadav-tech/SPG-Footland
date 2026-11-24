@@ -67,7 +67,7 @@ export function AdminTable<T>({
                 value={searchValue || ''}
                 onChange={(e) => onSearchChange(e.target.value)}
                 placeholder={searchPlaceholder}
-                className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                className="w-full rounded-lg border border-slate-300 bg-white py-2 pl-9 pr-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
               />
             </div>
           )}
@@ -99,9 +99,9 @@ export function AdminTable<T>({
                       <span>{col.header}</span>
                       {sortKey === col.key ? (
                         sortDir === 'asc' ? (
-                          <ArrowUp className="h-3.5 w-3.5 text-red-600" />
+                          <ArrowUp className="h-3.5 w-3.5 text-orange-500" />
                         ) : (
-                          <ArrowDown className="h-3.5 w-3.5 text-red-600" />
+                          <ArrowDown className="h-3.5 w-3.5 text-orange-500" />
                         )
                       ) : null}
                     </button>

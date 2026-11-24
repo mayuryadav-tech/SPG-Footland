@@ -68,7 +68,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
       onMouseLeave={() => setPaused(false)}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
-      className="relative w-full overflow-hidden bg-[#1C0A0C]"
+      className="relative w-full overflow-hidden bg-slate-950"
     >
       <div className="relative h-[420px] sm:h-[490px] lg:h-[540px] w-full">
         {banners.map((banner, index) => {
@@ -88,20 +88,20 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
                 eager={index === 0}
                 className="h-full w-full object-cover object-center"
               />
-              {/* Measured crimson-dark contrast scrim */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1C0A0C]/92 via-red-950/65 to-[#1C0A0C]/20" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1C0A0C]/80 via-transparent to-transparent" />
+              {/* Measured navy contrast scrim */}
+              <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/60 to-slate-950/20" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent" />
 
               <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col justify-end px-5 pb-16 sm:justify-center sm:pb-0 sm:px-8 lg:px-10">
                 <div className="max-w-2xl">
-                  <p className="font-mono text-xs font-semibold tracking-wider text-yellow-400 tabular-nums">
+                  <p className="font-mono text-xs font-semibold tracking-wider text-orange-400 tabular-nums">
                     Featured Drop 0{index + 1} / 0{count}
                   </p>
                   <h1 className="mt-2.5 font-display text-3xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.5rem] text-balance">
                     {banner.headline}
                   </h1>
                   {banner.subtext && (
-                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-stone-200 sm:text-base">
+                    <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-200 sm:text-base">
                       {banner.subtext}
                     </p>
                   )}
@@ -111,7 +111,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
                         href={banner.linkUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-lg bg-yellow-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 transition-colors whitespace-nowrap"
+                        className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600 transition-colors whitespace-nowrap"
                       >
                         <span>Shop Now</span>
                         <ArrowRight className="h-4 w-4" />
@@ -119,7 +119,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
                     ) : (
                       <Link
                         to={banner.linkUrl || '/'}
-                        className="inline-flex items-center gap-2 rounded-lg bg-yellow-400 px-6 py-3 text-sm font-bold text-slate-950 shadow-lg shadow-yellow-400/20 hover:bg-yellow-300 transition-colors whitespace-nowrap"
+                        className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600 transition-colors whitespace-nowrap"
                       >
                         <span>Shop Now</span>
                         <ArrowRight className="h-4 w-4" />
@@ -140,7 +140,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
             type="button"
             onClick={goPrev}
             aria-label="Previous banner"
-            className="absolute left-3 sm:left-5 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-[#1C0A0C]/70 text-white backdrop-blur-xs ring-1 ring-white/20 hover:bg-red-600 hover:ring-yellow-400 transition-colors"
+            className="absolute left-3 sm:left-5 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/60 text-white backdrop-blur-xs ring-1 ring-white/20 hover:bg-orange-500 hover:ring-orange-500 transition-colors"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -148,7 +148,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
             type="button"
             onClick={goNext}
             aria-label="Next banner"
-            className="absolute right-3 sm:right-5 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-[#1C0A0C]/70 text-white backdrop-blur-xs ring-1 ring-white/20 hover:bg-red-600 hover:ring-yellow-400 transition-colors"
+            className="absolute right-3 sm:right-5 top-1/2 z-20 -translate-y-1/2 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/60 text-white backdrop-blur-xs ring-1 ring-white/20 hover:bg-orange-500 hover:ring-orange-500 transition-colors"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -170,7 +170,7 @@ export function Carousel({ banners, loading = false }: CarouselProps) {
                   aria-label={`Show banner ${index + 1}: ${banner.headline}`}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2.5 rounded-full transition-all duration-200 ${
-                    active ? 'w-8 bg-yellow-400' : 'w-2.5 bg-white/45 hover:bg-white/80'
+                    active ? 'w-8 bg-orange-500' : 'w-2.5 bg-white/45 hover:bg-white/80'
                   }`}
                 />
               );

@@ -11,7 +11,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-slate-50">
         <div className="flex flex-col items-center gap-3">
-          <Loader2 className="h-8 w-8 animate-spin text-red-600" />
+          <Loader2 className="h-8 w-8 animate-spin text-orange-500" />
           <p className="text-sm font-medium text-slate-600">Verifying admin session...</p>
         </div>
       </div>

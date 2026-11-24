@@ -48,7 +48,7 @@ export function LegalFaqPage({ mode }: LegalFaqPageProps) {
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {mode === 'faqs' ? (
           <>
-            <p className="font-mono text-xs font-semibold text-red-600">Help &amp; Guidance</p>
+            <p className="font-mono text-xs font-semibold text-orange-600">Help &amp; Guidance</p>
             <h1 className="mt-2 font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
               Frequently Asked Questions
             </h1>
@@ -61,12 +61,12 @@ export function LegalFaqPage({ mode }: LegalFaqPageProps) {
                       type="button"
                       onClick={() => setOpenIndex(open ? null : idx)}
                       aria-expanded={open}
-                      className="flex w-full items-center justify-between gap-4 text-left font-display text-base font-bold text-slate-900 hover:text-red-600 transition-colors"
+                      className="flex w-full items-center justify-between gap-4 text-left font-display text-base font-bold text-slate-900 hover:text-orange-600 transition-colors"
                     >
                       <span>{item.q}</span>
                       <ChevronDown
                         className={`h-5 w-5 shrink-0 text-slate-400 transition-transform ${
-                          open ? 'rotate-180 text-red-600' : ''
+                          open ? 'rotate-180 text-orange-500' : ''
                         }`}
                       />
                     </button>
@@ -80,7 +80,7 @@ export function LegalFaqPage({ mode }: LegalFaqPageProps) {
           </>
         ) : mode === 'privacy' ? (
           <article className="space-y-5 text-sm leading-relaxed text-slate-600">
-            <p className="font-mono text-xs font-semibold text-red-600">Legal</p>
+            <p className="font-mono text-xs font-semibold text-orange-600">Legal</p>
             <h1 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
               Privacy Policy
             </h1>
@@ -97,7 +97,7 @@ export function LegalFaqPage({ mode }: LegalFaqPageProps) {
             </p>
             <p>
               To request deletion of an enquiry or unsubscribe from announcements, email us at{' '}
-              <a href={`mailto:${siteInfo.email}`} className="font-semibold text-red-600 underline">
+              <a href={`mailto:${siteInfo.email}`} className="font-semibold text-orange-600 underline">
                 {siteInfo.email}
               </a>
               .
@@ -105,7 +105,7 @@ export function LegalFaqPage({ mode }: LegalFaqPageProps) {
           </article>
         ) : (
           <article className="space-y-5 text-sm leading-relaxed text-slate-600">
-            <p className="font-mono text-xs font-semibold text-red-600">Legal</p>
+            <p className="font-mono text-xs font-semibold text-orange-600">Legal</p>
             <h1 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl">
               Terms &amp; Conditions
             </h1>

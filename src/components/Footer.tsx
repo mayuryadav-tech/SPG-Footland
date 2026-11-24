@@ -64,15 +64,15 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-[#1C0A0C] text-stone-300 border-t border-red-900/60">
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
       {/* Newsletter Strip */}
-      <div className="border-b border-red-900/50 bg-[#2A0D11]">
+      <div className="border-b border-slate-800/80 bg-slate-900/70">
         <div className="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-8 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div>
             <h2 className="font-display text-xl font-bold text-white">
               First access to new footwear drops
             </h2>
-            <p className="mt-1 text-sm text-stone-300">
+            <p className="mt-1 text-sm text-slate-400">
               Receive seasonal collection alerts, in-store offers, and restock notifications.
             </p>
           </div>
@@ -84,12 +84,12 @@ export function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email address"
               aria-label="Email address for newsletter"
-              className="flex-1 rounded-lg border border-red-900/80 bg-[#140608] px-4 py-2.5 text-sm text-white placeholder:text-stone-400 focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400/30"
+              className="flex-1 rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/30"
             />
             <button
               type="submit"
               disabled={submitting}
-              className="inline-flex items-center gap-2 rounded-lg bg-yellow-400 px-5 py-2.5 text-sm font-bold text-slate-950 hover:bg-yellow-300 transition-colors disabled:opacity-60 whitespace-nowrap shrink-0"
+              className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-orange-600 transition-colors disabled:opacity-60 whitespace-nowrap shrink-0"
             >
               <Send className="h-4 w-4" />
               {submitting ? 'Joining...' : 'Subscribe'}
@@ -105,7 +105,7 @@ export function Footer() {
           <Link to="/" className="inline-block">
             <Logo shopName={siteInfo.shopName} logoUrl={siteInfo.logoUrl} variant="light" />
           </Link>
-          <p className="text-sm leading-relaxed text-stone-400">{siteInfo.footerText}</p>
+          <p className="text-sm leading-relaxed text-slate-400">{siteInfo.footerText}</p>
           <div className="flex items-center gap-2.5 pt-2">
             {socialItems.map((item) => (
               <a
@@ -114,7 +114,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.label}
-                className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#2A0D11] text-yellow-400 ring-1 ring-red-900/70 hover:bg-red-600 hover:text-white hover:ring-red-500 transition-colors"
+                className="flex h-9 w-9 items-center justify-center rounded-lg bg-slate-900 text-slate-300 ring-1 ring-slate-800 hover:bg-orange-500 hover:text-white hover:ring-orange-500 transition-colors"
               >
                 <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
                   {item.svg}
@@ -126,38 +126,38 @@ export function Footer() {
 
         {/* Column 2: Quick Links */}
         <div>
-          <h3 className="font-display text-sm font-bold tracking-wide text-yellow-400">Quick Links</h3>
+          <h3 className="font-display text-sm font-bold tracking-wide text-white">Quick Links</h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             <li>
-              <Link to="/" className="text-stone-300 hover:text-yellow-300 transition-colors">
+              <Link to="/" className="text-slate-400 hover:text-orange-400 transition-colors">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/about" className="text-stone-300 hover:text-yellow-300 transition-colors">
+              <Link to="/about" className="text-slate-400 hover:text-orange-400 transition-colors">
                 About Us
               </Link>
             </li>
             <li>
-              <Link to="/contact" className="text-stone-300 hover:text-yellow-300 transition-colors">
+              <Link to="/contact" className="text-slate-400 hover:text-orange-400 transition-colors">
                 Contact
               </Link>
             </li>
             <li>
               <Link
                 to="/privacy-policy"
-                className="text-stone-300 hover:text-yellow-300 transition-colors"
+                className="text-slate-400 hover:text-orange-400 transition-colors"
               >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link to="/terms" className="text-stone-300 hover:text-yellow-300 transition-colors">
+              <Link to="/terms" className="text-slate-400 hover:text-orange-400 transition-colors">
                 Terms &amp; Conditions
               </Link>
             </li>
             <li>
-              <Link to="/faqs" className="text-stone-300 hover:text-yellow-300 transition-colors">
+              <Link to="/faqs" className="text-slate-400 hover:text-orange-400 transition-colors">
                 FAQs
               </Link>
             </li>
@@ -166,18 +166,18 @@ export function Footer() {
 
         {/* Column 3: Shop by Category */}
         <div>
-          <h3 className="font-display text-sm font-bold tracking-wide text-yellow-400">
+          <h3 className="font-display text-sm font-bold tracking-wide text-white">
             Shop by Category
           </h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {categories.length === 0 ? (
-              <li className="text-stone-500">Catalogue loading...</li>
+              <li className="text-slate-500">Catalogue loading...</li>
             ) : (
               categories.map((cat) => (
                 <li key={cat.id}>
                   <Link
                     to={`/category/${cat.slug}`}
-                    className="text-stone-300 hover:text-yellow-300 transition-colors"
+                    className="text-slate-400 hover:text-orange-400 transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -189,16 +189,16 @@ export function Footer() {
 
         {/* Column 4: Contact Details */}
         <div>
-          <h3 className="font-display text-sm font-bold tracking-wide text-yellow-400">
+          <h3 className="font-display text-sm font-bold tracking-wide text-white">
             Visit &amp; Contact
           </h3>
-          <ul className="mt-4 space-y-3.5 text-sm text-stone-300">
+          <ul className="mt-4 space-y-3.5 text-sm text-slate-400">
             <li className="flex items-start gap-2.5">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-yellow-400" />
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />
               <span className="leading-relaxed">{siteInfo.address}</span>
             </li>
             <li className="flex items-center gap-2.5">
-              <Phone className="h-4 w-4 shrink-0 text-yellow-400" />
+              <Phone className="h-4 w-4 shrink-0 text-orange-400" />
               <a
                 href={`tel:${siteInfo.phone.replace(/\s+/g, '')}`}
                 className="hover:text-white transition-colors font-mono text-xs sm:text-sm tabular-nums"
@@ -207,13 +207,13 @@ export function Footer() {
               </a>
             </li>
             <li className="flex items-center gap-2.5">
-              <Mail className="h-4 w-4 shrink-0 text-yellow-400" />
+              <Mail className="h-4 w-4 shrink-0 text-orange-400" />
               <a href={`mailto:${siteInfo.email}`} className="hover:text-white transition-colors">
                 {siteInfo.email}
               </a>
             </li>
             <li className="flex items-start gap-2.5">
-              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-yellow-400" />
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-orange-400" />
               <span>{siteInfo.workingHours}</span>
             </li>
           </ul>
@@ -221,8 +221,8 @@ export function Footer() {
       </div>
 
       {/* Bottom Copyright Bar */}
-      <div className="border-t border-red-900/50">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-stone-400 sm:flex-row sm:px-6 lg:px-8">
+      <div className="border-t border-slate-800/80">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:px-6 lg:px-8">
           <p>© 2026 {siteInfo.shopName}. All rights reserved.</p>
           <p>Genuine UK-Sized Footwear Catalogue · Direct WhatsApp Enquiry</p>
         </div>

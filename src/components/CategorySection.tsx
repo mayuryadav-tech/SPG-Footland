@@ -56,7 +56,7 @@ export function CategorySection({ category, index }: CategorySectionProps) {
 
           <Link
             to={`/category/${category.slug}`}
-            className="inline-flex items-center gap-2 self-start rounded-lg border border-red-600 bg-red-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-yellow-400 hover:border-yellow-400 hover:text-slate-950 transition-colors whitespace-nowrap shrink-0 sm:self-auto"
+            className="inline-flex items-center gap-2 self-start rounded-lg border border-slate-900 bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-orange-500 hover:border-orange-500 transition-colors whitespace-nowrap shrink-0 sm:self-auto"
           >
             <span>View All</span>
             <ArrowRight className="h-4 w-4" />

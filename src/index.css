@@ -4,13 +4,11 @@
   --font-display: "Outfit", system-ui, -apple-system, sans-serif;
   --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --color-brand-950: #1c0a0c;
-  --color-brand-900: #2d0d11;
-  --color-brand-800: #451218;
-  --color-brand-red: #dc2626;
-  --color-brand-red-dark: #b91c1c;
-  --color-brand-yellow: #facc15;
-  --color-brand-yellow-dark: #eab308;
+  --color-navy-950: #020617;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1e293b;
+  --color-orange-accent: #f97316;
+  --color-orange-accent-dark: #ea580c;
 }
 
 @layer base {

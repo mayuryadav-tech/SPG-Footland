@@ -158,7 +158,7 @@ export function AdminCategoriesPage() {
         <button
           type="button"
           onClick={openCreate}
-          className="inline-flex items-center gap-2 self-start rounded-lg bg-red-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-red-700 transition-colors whitespace-nowrap sm:self-auto"
+          className="inline-flex items-center gap-2 self-start rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors whitespace-nowrap sm:self-auto"
         >
           <Plus className="h-4 w-4" />
           <span>Add Category</span>
@@ -270,7 +270,7 @@ export function AdminCategoriesPage() {
       {/* Category Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[#1C0A0C]/70 p-4 sm:py-12 backdrop-blur-xs"
+          className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-slate-950/65 p-4 sm:py-12 backdrop-blur-xs"
           role="dialog"
           aria-modal="true"
         >
@@ -307,7 +307,7 @@ export function AdminCategoriesPage() {
                       }));
                     }}
                     placeholder="Sneakers"
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -319,7 +319,7 @@ export function AdminCategoriesPage() {
                     value={form.slug}
                     onChange={(e) => setForm({ ...form, slug: slugify(e.target.value) })}
                     placeholder="sneakers"
-                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-red-600 focus:outline-none"
+                    className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none"
                   />
                 </div>
               </div>
@@ -332,7 +332,7 @@ export function AdminCategoriesPage() {
                   max={1000}
                   value={form.order}
                   onChange={(e) => setForm({ ...form, order: e.target.value })}
-                  className="mt-1.5 w-28 rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-red-600 focus:outline-none tabular-nums"
+                  className="mt-1.5 w-28 rounded-lg border border-slate-300 px-3 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none tabular-nums"
                 />
               </div>
 
@@ -344,7 +344,7 @@ export function AdminCategoriesPage() {
                   value={form.description}
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                   placeholder="Short tagline shown on homepage and category page..."
-                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+                  className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -367,7 +367,7 @@ export function AdminCategoriesPage() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="rounded-lg bg-red-600 px-5 py-2 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-60"
+                  className="rounded-lg bg-orange-500 px-5 py-2 text-sm font-bold text-white hover:bg-orange-600 disabled:opacity-60"
                 >
                   {saving ? 'Saving...' : editing ? 'Save Category' : 'Create Category'}
                 </button>

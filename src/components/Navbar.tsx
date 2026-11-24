@@ -100,18 +100,18 @@ export function Navbar() {
   const navLinkClass = ({ isActive }: { isActive: boolean }) =>
     `text-sm font-semibold whitespace-nowrap shrink-0 transition-colors py-1 border-b-2 ${
       isActive
-        ? 'text-red-600 border-red-600'
-        : 'text-slate-700 border-transparent hover:text-slate-950 hover:border-yellow-400'
+        ? 'text-orange-600 border-orange-500'
+        : 'text-slate-700 border-transparent hover:text-slate-950 hover:border-slate-300'
     }`;
 
   return (
-    <header className="sticky top-0 z-40 border-b-2 border-yellow-400/80 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Zone 1: Brand Mark */}
         <Link
           to="/"
           aria-label={`${siteInfo.shopName} Home`}
-          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-600 rounded-lg"
+          className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 rounded-lg"
         >
           <Logo shopName={siteInfo.shopName} logoUrl={siteInfo.logoUrl} variant="dark" />
         </Link>
@@ -132,8 +132,8 @@ export function Navbar() {
               aria-expanded={shopOpen}
               className={`inline-flex items-center gap-1.5 text-sm font-semibold whitespace-nowrap shrink-0 py-1 border-b-2 transition-colors ${
                 location.pathname.startsWith('/category/')
-                  ? 'text-red-600 border-red-600'
-                  : 'text-slate-700 border-transparent hover:text-slate-950 hover:border-yellow-400'
+                  ? 'text-orange-600 border-orange-500'
+                  : 'text-slate-700 border-transparent hover:text-slate-950 hover:border-slate-300'
               }`}
             >
               <span>Shop</span>
@@ -164,7 +164,7 @@ export function Navbar() {
                         to={`/category/${cat.slug}`}
                         className="group flex flex-col rounded-xl px-3 py-2.5 hover:bg-slate-50 transition-colors"
                       >
-                        <span className="text-sm font-semibold text-slate-900 group-hover:text-red-600 transition-colors">
+                        <span className="text-sm font-semibold text-slate-900 group-hover:text-orange-600 transition-colors">
                           {cat.name}
                         </span>
                         <span className="mt-0.5 line-clamp-1 text-xs text-slate-500">
@@ -199,7 +199,7 @@ export function Navbar() {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search shoes, brands..."
                 aria-label="Search footwear catalogue"
-                className="w-48 sm:w-64 rounded-lg border border-slate-300 bg-slate-50 py-2 pl-9 pr-8 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-red-600/20"
+                className="w-48 sm:w-64 rounded-lg border border-slate-300 bg-slate-50 py-2 pl-9 pr-8 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-500/20"
               />
               <button
                 type="button"
@@ -286,7 +286,7 @@ export function Navbar() {
               end
               className={({ isActive }) =>
                 `rounded-lg px-3 py-2.5 text-base font-semibold ${
-                  isActive ? 'bg-red-50 text-red-700' : 'text-slate-800 hover:bg-slate-50'
+                  isActive ? 'bg-orange-50 text-orange-600' : 'text-slate-800 hover:bg-slate-50'
                 }`
               }
             >
@@ -305,12 +305,12 @@ export function Navbar() {
             </button>
 
             {mobileShopExpanded && (
-              <div className="ml-3 grid grid-cols-2 gap-1 border-l-2 border-yellow-400 pl-3 py-1">
+              <div className="ml-3 grid grid-cols-2 gap-1 border-l-2 border-slate-100 pl-3 py-1">
                 {categories.map((cat) => (
                   <Link
                     key={cat.id}
                     to={`/category/${cat.slug}`}
-                    className="rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 hover:bg-red-50 hover:text-red-700"
+                    className="rounded-lg px-2.5 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-orange-600"
                   >
                     {cat.name}
                   </Link>
@@ -322,7 +322,7 @@ export function Navbar() {
               to="/about"
               className={({ isActive }) =>
                 `rounded-lg px-3 py-2.5 text-base font-semibold ${
-                  isActive ? 'bg-red-50 text-red-700' : 'text-slate-800 hover:bg-slate-50'
+                  isActive ? 'bg-orange-50 text-orange-600' : 'text-slate-800 hover:bg-slate-50'
                 }`
               }
             >
@@ -333,7 +333,7 @@ export function Navbar() {
               to="/contact"
               className={({ isActive }) =>
                 `rounded-lg px-3 py-2.5 text-base font-semibold ${
-                  isActive ? 'bg-red-50 text-red-700' : 'text-slate-800 hover:bg-slate-50'
+                  isActive ? 'bg-orange-50 text-orange-600' : 'text-slate-800 hover:bg-slate-50'
                 }`
               }
             >

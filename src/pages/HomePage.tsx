@@ -47,7 +47,7 @@ export function HomePage() {
     <div>
       {/* Hero Carousel directly below Navbar */}
       {bannerError ? (
-        <div className="bg-[#1C0A0C] px-6 py-12 text-center text-sm text-yellow-200">
+        <div className="bg-slate-900 px-6 py-12 text-center text-sm text-red-300">
           Unable to load promotional banners right now.
         </div>
       ) : (
@@ -56,16 +56,16 @@ export function HomePage() {
 
       {/* Quick Category Jump Strip */}
       {categories.length > 0 && (
-        <div className="border-b-2 border-yellow-400/70 bg-[#1C0A0C]">
+        <div className="border-b border-slate-200 bg-slate-900">
           <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-3.5 sm:px-6 lg:px-8">
-            <span className="mr-2 text-xs font-semibold text-yellow-300 whitespace-nowrap shrink-0">
+            <span className="mr-2 text-xs font-semibold text-slate-400 whitespace-nowrap shrink-0">
               Browse:
             </span>
             {categories.map((cat) => (
               <Link
                 key={cat.id}
                 to={`/category/${cat.slug}`}
-                className="rounded-md px-3 py-1.5 text-xs font-semibold text-red-100 hover:bg-yellow-400 hover:text-slate-950 transition-colors whitespace-nowrap shrink-0"
+                className="rounded-md px-3 py-1.5 text-xs font-semibold text-slate-200 hover:bg-orange-500 hover:text-white transition-colors whitespace-nowrap shrink-0"
               >
                 {cat.name}
               </Link>
@@ -78,7 +78,7 @@ export function HomePage() {
       {isEmptyCatalogue && (
         <section className="mx-auto max-w-3xl px-4 py-20 text-center sm:px-6">
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-10">
-            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#1C0A0C] text-yellow-400">
+            <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-orange-400">
               <Database className="h-7 w-7" />
             </div>
             <h1 className="font-display text-2xl font-extrabold text-slate-900 sm:text-3xl">
@@ -92,7 +92,7 @@ export function HomePage() {
             <div className="mt-7 flex justify-center">
               <Link
                 to="/admin/login"
-                className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-3 text-sm font-bold text-white hover:bg-red-700 transition-colors"
+                className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-3 text-sm font-bold text-white hover:bg-orange-600 transition-colors"
               >
                 <span>Open Admin Setup</span>
                 <ArrowRight className="h-4 w-4" />

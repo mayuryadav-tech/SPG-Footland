@@ -127,7 +127,7 @@ export function AdminDashboardPage() {
             type="button"
             onClick={() => setSeedConfirmOpen(true)}
             disabled={seeding}
-            className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-4 py-2.5 text-sm font-bold text-white hover:bg-red-700 transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-4 py-2.5 text-sm font-bold text-white hover:bg-orange-600 transition-colors whitespace-nowrap"
           >
             <Database className="h-4 w-4" />
             <span>Seed Sample Data</span>
@@ -140,7 +140,7 @@ export function AdminDashboardPage() {
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">Total Products</span>
-            <Package className="h-4 w-4 text-red-600" />
+            <Package className="h-4 w-4 text-orange-500" />
           </div>
           <p className="mt-3 font-mono text-3xl font-bold text-slate-950 tabular-nums">
             {loading ? '—' : products.length}
@@ -153,7 +153,7 @@ export function AdminDashboardPage() {
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">Categories</span>
-            <FolderKanban className="h-4 w-4 text-red-600" />
+            <FolderKanban className="h-4 w-4 text-orange-500" />
           </div>
           <p className="mt-3 font-mono text-3xl font-bold text-slate-950 tabular-nums">
             {loading ? '—' : categories.length}
@@ -164,12 +164,12 @@ export function AdminDashboardPage() {
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">Total Enquiries</span>
-            <Mail className="h-4 w-4 text-red-600" />
+            <Mail className="h-4 w-4 text-orange-500" />
           </div>
           <p className="mt-3 font-mono text-3xl font-bold text-slate-950 tabular-nums">
             {loading ? '—' : enquiries.length}
           </p>
-          <p className="mt-1 text-xs font-medium text-red-600 font-mono tabular-nums">
+          <p className="mt-1 text-xs font-medium text-orange-600 font-mono tabular-nums">
             {unreadEnquiries} unread
           </p>
         </div>
@@ -177,7 +177,7 @@ export function AdminDashboardPage() {
         <div className="rounded-xl border border-slate-200 bg-white p-5">
           <div className="flex items-center justify-between text-slate-500">
             <span className="text-xs font-semibold">Low-Stock Alerts</span>
-            <AlertTriangle className="h-4 w-4 text-yellow-600" />
+            <AlertTriangle className="h-4 w-4 text-amber-600" />
           </div>
           <p className="mt-3 font-mono text-3xl font-bold text-slate-950 tabular-nums">
             {loading ? '—' : lowStockProducts.length}
@@ -194,7 +194,7 @@ export function AdminDashboardPage() {
             <h2 className="font-display text-lg font-bold text-slate-900">Products per Category</h2>
             <Link
               to="/admin/categories"
-              className="text-xs font-semibold text-red-600 hover:text-red-700"
+              className="text-xs font-semibold text-orange-600 hover:text-orange-700"
             >
               Manage categories →
             </Link>
@@ -217,9 +217,9 @@ export function AdminDashboardPage() {
                         {cat.count} products
                       </span>
                     </div>
-                    <div className="h-2 w-full overflow-hidden rounded-full bg-yellow-100/80">
+                    <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100">
                       <div
-                        className="h-full rounded-full bg-red-600 transition-all duration-300"
+                        className="h-full rounded-full bg-slate-900 transition-all duration-300"
                         style={{ width: `${widthPct}%` }}
                       />
                     </div>
@@ -236,7 +236,7 @@ export function AdminDashboardPage() {
             <h2 className="font-display text-lg font-bold text-slate-900">Low-Stock Items</h2>
             <Link
               to="/admin/products"
-              className="text-xs font-semibold text-red-600 hover:text-red-700"
+              className="text-xs font-semibold text-orange-600 hover:text-orange-700"
             >
               Restock →
             </Link>
@@ -274,14 +274,14 @@ export function AdminDashboardPage() {
       <section className="rounded-xl border border-slate-200 bg-white overflow-hidden">
         <div className="flex items-center justify-between border-b border-slate-200 px-6 py-4">
           <div className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-red-600" />
+            <TrendingUp className="h-5 w-5 text-orange-500" />
             <h2 className="font-display text-lg font-bold text-slate-900">
               Top 5 Best-Selling Products
             </h2>
           </div>
           <Link
             to="/admin/products"
-            className="text-xs font-semibold text-red-600 hover:text-red-700"
+            className="text-xs font-semibold text-orange-600 hover:text-orange-700"
           >
             View all products →
           </Link>
@@ -332,7 +332,7 @@ export function AdminDashboardPage() {
                     <td className="px-4 py-3 text-right font-mono text-slate-600 tabular-nums">
                       {prod.stock}
                     </td>
-                    <td className="px-6 py-3 text-right font-mono font-bold text-red-600 tabular-nums">
+                    <td className="px-6 py-3 text-right font-mono font-bold text-orange-600 tabular-nums">
                       {prod.unitsSold.toLocaleString('en-IN')}
                     </td>
                   </tr>

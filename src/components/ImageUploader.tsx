@@ -159,8 +159,8 @@ export function ImageUploader({
           onClick={() => !uploading && fileInputRef.current?.click()}
           className={`flex flex-col items-center justify-center rounded-xl border-2 border-dashed px-4 py-6 text-center transition-colors ${
             uploading
-              ? 'border-red-400 bg-red-50/40 cursor-wait'
-              : 'border-slate-300 bg-slate-50 hover:border-red-500 hover:bg-yellow-50/40 cursor-pointer'
+              ? 'border-orange-300 bg-orange-50/40 cursor-wait'
+              : 'border-slate-300 bg-slate-50 hover:border-orange-400 hover:bg-orange-50/30 cursor-pointer'
           }`}
         >
           <input
@@ -173,13 +173,13 @@ export function ImageUploader({
           />
           {uploading ? (
             <div className="flex flex-col items-center gap-2">
-              <Loader2 className="h-6 w-6 animate-spin text-red-600" />
+              <Loader2 className="h-6 w-6 animate-spin text-orange-500" />
               <p className="text-sm font-medium text-slate-800 font-mono tabular-nums">
                 Uploading to Firebase Storage... {progress}%
               </p>
               <div className="h-1.5 w-48 overflow-hidden rounded-full bg-slate-200">
                 <div
-                  className="h-full bg-red-600 transition-all duration-150"
+                  className="h-full bg-orange-500 transition-all duration-150"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -209,12 +209,12 @@ export function ImageUploader({
               }
             }}
             placeholder="https://example.com/shoe.jpg or /src/assets/images/..."
-            className="flex-1 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-red-600 focus:outline-none focus:ring-2 focus:ring-red-600/20"
+            className="flex-1 rounded-lg border border-slate-300 bg-white px-3.5 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
           />
           <button
             type="button"
             onClick={handleAddUrl}
-            className="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 transition-colors whitespace-nowrap"
+            className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-orange-500 transition-colors whitespace-nowrap"
           >
             Add URL
           </button>

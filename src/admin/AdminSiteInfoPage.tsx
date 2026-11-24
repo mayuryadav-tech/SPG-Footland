@@ -134,7 +134,7 @@ export function AdminSiteInfoPage() {
               maxLength={100}
               value={info.shopName}
               onChange={(e) => setInfo({ ...info, shopName: e.target.value })}
-              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
@@ -144,7 +144,7 @@ export function AdminSiteInfoPage() {
               maxLength={200}
               value={info.workingHours}
               onChange={(e) => setInfo({ ...info, workingHours: e.target.value })}
-              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
             />
           </div>
         </div>
@@ -166,7 +166,7 @@ export function AdminSiteInfoPage() {
               maxLength={40}
               value={info.phone}
               onChange={(e) => setInfo({ ...info, phone: e.target.value })}
-              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-red-600 focus:outline-none"
+              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
@@ -179,7 +179,7 @@ export function AdminSiteInfoPage() {
               value={info.whatsapp}
               onChange={(e) => setInfo({ ...info, whatsapp: e.target.value })}
               placeholder="919822045190"
-              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-red-600 focus:outline-none"
+              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-sm focus:border-orange-500 focus:outline-none"
             />
           </div>
           <div>
@@ -189,7 +189,7 @@ export function AdminSiteInfoPage() {
               maxLength={160}
               value={info.email}
               onChange={(e) => setInfo({ ...info, email: e.target.value })}
-              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+              className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
             />
           </div>
         </div>
@@ -201,7 +201,7 @@ export function AdminSiteInfoPage() {
             maxLength={400}
             value={info.address}
             onChange={(e) => setInfo({ ...info, address: e.target.value })}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
           />
         </div>
 
@@ -212,7 +212,7 @@ export function AdminSiteInfoPage() {
             maxLength={300}
             value={info.footerText}
             onChange={(e) => setInfo({ ...info, footerText: e.target.value })}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
           />
         </div>
 
@@ -225,7 +225,7 @@ export function AdminSiteInfoPage() {
             maxLength={4000}
             value={info.aboutText}
             onChange={(e) => setInfo({ ...info, aboutText: e.target.value })}
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm leading-relaxed focus:border-red-600 focus:outline-none"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 text-sm leading-relaxed focus:border-orange-500 focus:outline-none"
           />
         </div>
 
@@ -239,7 +239,7 @@ export function AdminSiteInfoPage() {
             value={info.mapEmbedUrl}
             onChange={(e) => setInfo({ ...info, mapEmbedUrl: e.target.value })}
             placeholder="https://www.google.com/maps/embed?pb=..."
-            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-xs focus:border-red-600 focus:outline-none"
+            className="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2 font-mono text-xs focus:border-orange-500 focus:outline-none"
           />
         </div>
 
@@ -263,7 +263,7 @@ export function AdminSiteInfoPage() {
                     })
                   }
                   placeholder={`https://${network}.com/...`}
-                  className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-red-600 focus:outline-none"
+                  className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-orange-500 focus:outline-none"
                 />
               </div>
             ))}
@@ -274,7 +274,7 @@ export function AdminSiteInfoPage() {
           <button
             type="submit"
             disabled={saving}
-            className="inline-flex items-center gap-2 rounded-lg bg-red-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-red-700 disabled:opacity-60"
+            className="inline-flex items-center gap-2 rounded-lg bg-orange-500 px-6 py-2.5 text-sm font-bold text-white hover:bg-orange-600 disabled:opacity-60"
           >
             <Save className="h-4 w-4" />
             <span>{saving ? 'Saving...' : 'Save Site Information'}</span>
@@ -285,7 +285,7 @@ export function AdminSiteInfoPage() {
       {/* Authorized Admins Section */}
       <section className="rounded-xl border border-slate-200 bg-white p-6 sm:p-8 space-y-5">
         <div className="flex items-center gap-2">
-          <Shield className="h-5 w-5 text-red-600" />
+          <Shield className="h-5 w-5 text-orange-500" />
           <h2 className="font-display text-lg font-bold text-slate-900">Authorized Admin Emails</h2>
         </div>
         <p className="text-sm text-slate-600">
@@ -301,12 +301,12 @@ export function AdminSiteInfoPage() {
             value={newAdminEmail}
             onChange={(e) => setNewAdminEmail(e.target.value)}
             placeholder="teammate@gmail.com"
-            className="flex-1 rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-red-600 focus:outline-none"
+            className="flex-1 rounded-lg border border-slate-300 px-3.5 py-2 text-sm focus:border-orange-500 focus:outline-none"
           />
           <button
             type="submit"
             disabled={addingAdmin}
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#1C0A0C] px-4 py-2 text-sm font-semibold text-white hover:bg-red-700 disabled:opacity-60 whitespace-nowrap"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 disabled:opacity-60 whitespace-nowrap"
           >
             <UserPlus className="h-4 w-4" />
             <span>{addingAdmin ? 'Adding...' : 'Add Admin'}</span>
